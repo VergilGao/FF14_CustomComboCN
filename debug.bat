@@ -1,0 +1,1 @@
+dotnet build src/CustomComboPlugin.csproj -c Debug -o build/debug

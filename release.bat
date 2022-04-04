@@ -1,0 +1,1 @@
+dotnet build src/CustomComboPlugin.csproj -c Release -o build/release
