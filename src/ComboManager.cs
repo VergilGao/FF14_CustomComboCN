@@ -50,7 +50,7 @@ namespace CustomComboPlugin
                                    })
                                    .Cast<CustomCombo>()
                                    .OrderBy(c => c.JobID)
-                                   .ThenBy(c => c.Order)
+                                   .ThenByDescending(c => c.Order)
                                    .ToList();
 
             getIconHook = new Hook<GetIconDelegate>(PluginService.Address.GetAdjustedActionId, GetIconDetour);

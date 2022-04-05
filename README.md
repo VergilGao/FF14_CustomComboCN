@@ -24,7 +24,7 @@
    - `ComboID`  
    combo的ID，也是唯一标识符，`ushort`类型。为了避免冲突以及对其他开发人员透明，建议此Id采用常量表达式的方式声明在子类，其中高8位固定为职业Id，低8位可以自定义。比如即刻复活的Id：`public const ushort Identity = (Job.Adventurer << 8) ^ 0x10;`
    - `Order`  
-   combo在配置界面的排序，同时也是combo逻辑的执行顺序
+   combo在配置界面的排序，同时也是combo的优先级，越靠后的combo优先级越高
 2. **SecretCombo**  
    秘密combo，需要用户手动勾选特定选项才会在配置界面显示，一般来说，如果你认为此combo需要额外的游戏理解才需要使用时，可以给combo加上此`Attribute`
 3. **ConflictCombo**  
