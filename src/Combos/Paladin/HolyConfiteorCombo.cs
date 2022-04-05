@@ -12,7 +12,6 @@ namespace CustomComboPlugin.Combos.Paladin
     /// <summary>
     /// 圣灵/圣环-悔罪
     /// </summary>
-    [SecretCombo]
     [CustomComboInfo("圣灵/圣环-悔罪连击", "在安魂祈祷最后一层时悔罪替换圣灵/圣环", Job.Paladin, Identity, 4)]
     internal sealed class HolyConfiteorCombo : CustomCombo
     {
