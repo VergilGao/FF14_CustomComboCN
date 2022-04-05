@@ -13,6 +13,7 @@ namespace CustomComboPlugin
     {
         public const byte
             Adventurer = 0x00, // 冒险者
+            Paladin = 0x13, // 骑士
             WhiteMage = 0x18, // 白魔法师
             Summoner = 0x1b, // 召唤师
             Astrologian = 0x21, // 占星术士
@@ -21,6 +22,7 @@ namespace CustomComboPlugin
         public static Dictionary<byte, string> Names = new()
         {
             [Adventurer] = "冒险者",
+            [Paladin] = "骑士",
             [WhiteMage] = "白魔法师",
             [Summoner] = "召唤师",
             [Astrologian] = "占星术士",
