@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.3.3</Version>
+		<Version>0.3.6</Version>
 		<Authors>attick, daemitus, VergilGao</Authors>
 		<Company>-</Company>
 		<Description>卫月框架下的连击整合插件，节省你的热键栏空间。</Description>
