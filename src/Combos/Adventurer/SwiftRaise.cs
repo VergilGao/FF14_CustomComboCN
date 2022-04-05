@@ -19,9 +19,9 @@ namespace CustomComboPlugin.Combos.Adventurer
 
         protected override uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level)
         {
-            if ((actionId == WhiteMage.Identities.Skills.Raise && level >= WhiteMage.Identities.Levels.Raise) ||
-                (actionId == Summoner.Identities.Skills.Resurrection && level >= Summoner.Identities.Levels.Resurrection) ||
-                (actionId == Astrologian.Identities.Skills.Ascend && level >= Astrologian.Identities.Levels.Ascend))
+            if ((actionId == WhiteMage.Identities.Skills.Raise && level >= WhiteMage.Identities.Levels.Raise) || // 白魔法师
+                (actionId == Summoner.Identities.Skills.Resurrection && level >= Summoner.Identities.Levels.Resurrection) || // 召唤师
+                (actionId == Astrologian.Identities.Skills.Ascend && level >= Astrologian.Identities.Levels.Ascend)) // 占星术士
             {
                 if (level >= Adventurer.Identities.Levels.Swiftcast && IsOffCooldown(Adventurer.Identities.Skills.Swiftcast))
                 {
