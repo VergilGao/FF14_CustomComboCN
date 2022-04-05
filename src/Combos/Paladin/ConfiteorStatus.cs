@@ -1,8 +1,8 @@
 ﻿/*
- * filename: HolyConfiteorCombo.cs
+ * filename: ConfiteorStatus.cs
  * maintainer: VergilGao
  * description:
- *  蓝量不足时悔罪替换圣灵/圣环
+ *  悔罪替换圣灵/圣环
  */
 
 using CustomComboPlugin.Attributes;
@@ -10,11 +10,11 @@ using CustomComboPlugin.Attributes;
 namespace CustomComboPlugin.Combos.Paladin
 {
     /// <summary>
-    /// 蓝量不足时悔罪替换圣灵/圣环
+    /// 悔罪替换圣灵/圣环
     /// </summary>
     [SecretCombo]
-    [CustomComboInfo("蓝量不足时悔罪替换圣灵/圣环", "当安魂祈祷层数大于2并且玩家蓝量小于2000或安魂祈祷层数等于2并且玩家蓝量小于1400时，用悔罪替换圣灵/圣环", Job.Paladin, Identity, 7)]
-    internal sealed class ConfiteorByMana : CustomCombo
+    [CustomComboInfo("悔罪替换圣灵/圣环", "当玩家蓝量小于1000或安魂祈祷剩余时间小于2.5秒时，用悔罪替换圣灵/圣环", Job.Paladin, Identity, 7)]
+    internal sealed class ConfiteorStatus : CustomCombo
     {
         public const ushort Identity = (Job.Paladin << 8) ^ 0x07;
 
@@ -29,8 +29,7 @@ namespace CustomComboPlugin.Combos.Paladin
 
                     if (requiescat != null)
                     {
-                        if ((requiescat.StackCount > 2 && LocalPlayer?.CurrentMp < 2000) ||
-                            (requiescat.StackCount == 2 && LocalPlayer?.CurrentMp < 1400))
+                        if (LocalPlayer?.CurrentMp < 1000 || requiescat.RemainingTime <= 2.5)
                         {
                             return Paladin.Identities.Skills.Confiteor;
                         }
