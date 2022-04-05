@@ -12,6 +12,7 @@ namespace CustomComboPlugin.Combos.Adventurer
         public static class Skills
         {
             public const uint
+                LowBlow = 0x1d74, // 下踢
                 Swiftcast = 0x1d89, // 即刻咏唱
                 Placeholder = uint.MaxValue;
         }
@@ -31,6 +32,7 @@ namespace CustomComboPlugin.Combos.Adventurer
         public static class Levels
         {
             public const byte
+                LowBlow = 12, // 下踢
                 Swiftcast = 18, // 即刻咏唱
                 Placeholder = byte.MaxValue;
         }

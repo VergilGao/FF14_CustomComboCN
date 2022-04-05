@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Version>0.2.1</Version>
+		<Version>0.3.2</Version>
 		<Authors>attick, daemitus, VergilGao</Authors>
 		<Company>-</Company>
 		<Description>像PVP一样将连击整合在一个按键上。</Description>
