@@ -14,14 +14,14 @@ namespace CustomComboPlugin.Combos.Astrologian
     {
         public const ushort Identity = (Job.Astrologian << 8) ^ 0x00;
 
-        protected override uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level)
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if ((actionId == Astrologian.Identities.Skills.Benefic2 && level < Astrologian.Identities.Levels.Benefic2))
+            if ((actionID == Astrologian.Identities.Skills.Benefic2 && level < Astrologian.Identities.Levels.Benefic2))
             {
                 return Astrologian.Identities.Skills.Benfic;
             }
 
-            return actionId;
+            return actionID;
         }
     }
 }

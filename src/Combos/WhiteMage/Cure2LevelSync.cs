@@ -14,14 +14,14 @@ namespace CustomComboPlugin.Combos.WhiteMage
     {
         public const ushort Identity = (Job.WhiteMage << 8) ^ 0x00;
 
-        protected override uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level)
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if ((actionId == WhiteMage.Identities.Skills.Cure2 && level < WhiteMage.Identities.Levels.Cure2))
+            if ((actionID == WhiteMage.Identities.Skills.Cure2 && level < WhiteMage.Identities.Levels.Cure2))
             {
                 return WhiteMage.Identities.Skills.Cure;
             }
 
-            return actionId;
+            return actionID;
         }
     }
 }

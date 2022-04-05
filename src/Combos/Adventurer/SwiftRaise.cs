@@ -17,11 +17,11 @@ namespace CustomComboPlugin.Combos.Adventurer
     {
         public const ushort Identity = (Job.Adventurer << 8) ^ 0x10;
 
-        protected override uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level)
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if ((actionId == WhiteMage.Identities.Skills.Raise && level >= WhiteMage.Identities.Levels.Raise) || // 白魔法师
-                (actionId == Summoner.Identities.Skills.Resurrection && level >= Summoner.Identities.Levels.Resurrection) || // 召唤师
-                (actionId == Astrologian.Identities.Skills.Ascend && level >= Astrologian.Identities.Levels.Ascend)) // 占星术士
+            if ((actionID == WhiteMage.Identities.Skills.Raise && level >= WhiteMage.Identities.Levels.Raise) || // 白魔法师
+                (actionID == Summoner.Identities.Skills.Resurrection && level >= Summoner.Identities.Levels.Resurrection) || // 召唤师
+                (actionID == Astrologian.Identities.Skills.Ascend && level >= Astrologian.Identities.Levels.Ascend)) // 占星术士
             {
                 if (level >= Adventurer.Identities.Levels.Swiftcast && IsOffCooldown(Adventurer.Identities.Skills.Swiftcast))
                 {
@@ -29,7 +29,7 @@ namespace CustomComboPlugin.Combos.Adventurer
                 }
             }
 
-            return actionId;
+            return actionID;
         }
     }
 }

@@ -27,7 +27,7 @@ namespace CustomComboPlugin
     internal class ConfigWindow : Window
     {
         private readonly Dictionary<byte, Dictionary<ushort, CustomComboInfoAttribute>> groupCombos;
-        private readonly Dictionary<ushort, List<(byte JobId, ushort ComboId)>> conflictCombos;
+        private readonly Dictionary<ushort, List<(byte JobID, ushort ComboID)>> conflictCombos;
         private readonly Dictionary<ushort, List<CustomComboInfoAttribute>> comboChildren;
 
         private readonly Vector4 shadedColor = new(0.68f, 0.68f, 0.68f, 1.0f);
@@ -42,11 +42,11 @@ namespace CustomComboPlugin
                                                t.GetCustomAttribute<ObsoleteAttribute>() is null &&
                                                t.GetCustomAttribute<CustomComboInfoAttribute>() is not null)
                                    .Select(t => t.GetCustomAttribute<CustomComboInfoAttribute>())
-                                   .Where(info => PluginConfiguration.GetParent(info.ComboId) == null) // 没有父节点的，有父节点的我们要在后面给子节点里创造
-                                   .OrderBy(info => info.JobId)
+                                   .Where(info => PluginConfiguration.GetParent(info.ComboID) == null) // 没有父节点的，有父节点的我们要在后面给子节点里创造
+                                   .OrderBy(info => info.JobID)
                                    .ThenBy(info => info.Order)
-                                   .GroupBy(info => info.JobId)
-                                   .ToDictionary(g => g.Key, g => g.ToDictionary(c => c.ComboId));
+                                   .GroupBy(info => info.JobID)
+                                   .ToDictionary(g => g.Key, g => g.ToDictionary(c => c.ComboID));
 
             conflictCombos = Assembly.GetAssembly(typeof(CustomCombo))!.GetTypes()
                                      .Where(t => !t.IsAbstract &&
@@ -55,11 +55,11 @@ namespace CustomComboPlugin
                                                  t.GetCustomAttribute<CustomComboInfoAttribute>() is not null &&
                                                  t.GetCustomAttributes<ConflictComboAttribute>().Count() > 0)
                                      .ToDictionary(
-                                        t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboId,
+                                        t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboID,
                                         t =>
                                         {
-                                            var jobId = t.GetCustomAttribute<CustomComboInfoAttribute>().JobId;
-                                            return t.GetCustomAttributes<ConflictComboAttribute>().Select(c => (jobId, c.ConflictId)).ToList();
+                                            var jobId = t.GetCustomAttribute<CustomComboInfoAttribute>().JobID;
+                                            return t.GetCustomAttributes<ConflictComboAttribute>().Select(c => (jobId, c.ConflictID)).ToList();
                                         });
 
             comboChildren = Assembly.GetAssembly(typeof(CustomCombo))!.GetTypes()
@@ -68,8 +68,8 @@ namespace CustomComboPlugin
                                                  t.GetCustomAttribute<ObsoleteAttribute>() is null &&
                                                  t.GetCustomAttribute<CustomComboInfoAttribute>() is not null)
                                     .Select(t => t.GetCustomAttribute<CustomComboInfoAttribute>())
-                                    .Where(info => PluginConfiguration.GetParent(info.ComboId) != null)
-                                    .Select(info => (Parent: PluginConfiguration.GetParent(info.ComboId).Value, Child: info))
+                                    .Where(info => PluginConfiguration.GetParent(info.ComboID) != null)
+                                    .Select(info => (Parent: PluginConfiguration.GetParent(info.ComboID).Value, Child: info))
                                     .GroupBy(pair => pair.Parent)
                                     .ToDictionary(g => g.Key,
                                                   g => g.Select(pair => pair.Child)
@@ -111,25 +111,25 @@ namespace CustomComboPlugin
 
             var i = 1;
 
-            foreach (var jobId in groupCombos.Keys)
+            foreach (var jobID in groupCombos.Keys)
             {
-                if (Job.Names.TryGetValue(jobId, out var jobName))
+                if (Job.Names.TryGetValue(jobID, out var jobName))
                 {
                     if (ImGui.CollapsingHeader(jobName))
                     {
-                        foreach (var info in groupCombos[jobId].Values)
+                        foreach (var info in groupCombos[jobID].Values)
                         {
                             DrawPreset(info, ref i);
                         }
                     }
                     else
                     {
-                        i += groupCombos[jobId].Count;
+                        i += groupCombos[jobID].Count;
                     }
                 }
                 else
                 {
-                    PluginLog.Warning("未知的JobId:{@JobId}", jobId);
+                    PluginLog.Warning("未知的JobId:{@JobId}", jobID);
                 }
             }
 
@@ -140,13 +140,13 @@ namespace CustomComboPlugin
 
         private void DrawPreset(CustomComboInfoAttribute info, ref int i)
         {
-            var comboId = info.ComboId;
+            var comboID = info.ComboID;
 
-            var enabled = PluginService.Configuration.IsEnabled(comboId);
-            var secret = PluginService.Configuration.IsSecret(comboId);
-            var conflicts = PluginService.Configuration.GetConflicts(comboId);
+            var enabled = PluginService.Configuration.IsEnabled(comboID);
+            var secret = PluginService.Configuration.IsSecret(comboID);
+            var conflicts = PluginService.Configuration.GetConflicts(comboID);
             var showSecrets = PluginService.Configuration.EnableSecretCombos;
-            var parent = PluginConfiguration.GetParent(comboId);
+            var parent = PluginConfiguration.GetParent(comboID);
 
             if (secret && !showSecrets)
             {
@@ -159,8 +159,8 @@ namespace CustomComboPlugin
             {
                 if (enabled)
                 {
-                    EnableParentCombo(comboId);
-                    PluginService.Configuration.EnabledActions.Add(comboId);
+                    EnableParentCombo(comboID);
+                    PluginService.Configuration.EnabledActions.Add(comboID);
 
                     if (conflicts != null)
                     {
@@ -172,7 +172,7 @@ namespace CustomComboPlugin
                 }
                 else
                 {
-                    PluginService.Configuration.EnabledActions.Remove(comboId);
+                    PluginService.Configuration.EnabledActions.Remove(comboID);
                 }
 
                 PluginService.Configuration.Save();
@@ -200,19 +200,19 @@ namespace CustomComboPlugin
             ImGui.PopItemWidth();
 
             ImGui.PushStyleColor(ImGuiCol.Text, shadedColor);
-            ImGui.TextWrapped($"#{info.ComboId:X4}: {info.Description}");
+            ImGui.TextWrapped($"#{info.ComboID:X4}: {info.Description}");
             ImGui.PopStyleColor();
             ImGui.Spacing();
 
-            if (conflictCombos.TryGetValue(comboId, out var conflictInfos))
+            if (conflictCombos.TryGetValue(comboID, out var conflictInfos))
             {
                 var conflictText = conflictInfos.Select(conflict =>
                 {
-                    if (groupCombos.TryGetValue(conflict.JobId, out var groupCombo))
+                    if (groupCombos.TryGetValue(conflict.JobID, out var groupCombo))
                     {
-                        if (groupCombo.TryGetValue(conflict.ComboId, out var conflictInfo))
+                        if (groupCombo.TryGetValue(conflict.ComboID, out var conflictInfo))
                         {
-                            if (!showSecrets && PluginService.Configuration.IsSecret(conflictInfo.ComboId))
+                            if (!showSecrets && PluginService.Configuration.IsSecret(conflictInfo.ComboID))
                             {
                                 return string.Empty;
                             }
@@ -221,12 +221,12 @@ namespace CustomComboPlugin
                         }
                         else
                         {
-                            PluginLog.Warning("GroupCombos未收录ComboId={@ComboId}的CustomCombo!", conflict.ComboId);
+                            PluginLog.Warning("GroupCombos未收录ComboId={@ComboId}的CustomCombo!", conflict.ComboID);
                         }
                     }
                     else
                     {
-                        PluginLog.Warning("GroupCombos未收录JobId={@JobId}的CustomCombo!", conflict.JobId);
+                        PluginLog.Warning("GroupCombos未收录JobId={@JobId}的CustomCombo!", conflict.JobID);
                     }
 
                     return string.Empty;
@@ -244,7 +244,7 @@ namespace CustomComboPlugin
             var hideChildren = PluginService.Configuration.HideChildren;
             if (enabled || !hideChildren)
             {
-                if (comboChildren.TryGetValue(comboId, out var children))
+                if (comboChildren.TryGetValue(comboID, out var children))
                 {
                     if (children.Count > 0)
                     {
@@ -261,9 +261,9 @@ namespace CustomComboPlugin
             }
         }
 
-        private static void EnableParentCombo(ushort comboId)
+        private static void EnableParentCombo(ushort comboID)
         {
-            var parentMaybe = PluginConfiguration.GetParent(comboId);
+            var parentMaybe = PluginConfiguration.GetParent(comboID);
             while (parentMaybe != null)
             {
                 var parent = parentMaybe.Value;

@@ -14,46 +14,46 @@ namespace CustomComboPlugin.Combos
 {
     internal abstract class CustomCombo
     {
-        public byte JobId { get; private set; }
-        public ushort ComboId { get; private set; }
+        public byte JobID { get; private set; }
+        public ushort ComboID { get; private set; }
         public int Order { get; private set; }
 
-        public bool TryInvoke(uint actionId, byte level, uint lastComboMove, float comboTime, out uint newActionId)
+        public bool TryInvoke(uint actionID, byte level, uint lastComboMove, float comboTime, out uint newActionID)
         {
-            newActionId = 0;
+            newActionID = 0;
 
-            if (!IsEnabled(ComboId))
+            if (!IsEnabled(ComboID))
             {
                 return false;
             }
 
-            var classJobId = LocalPlayer!.ClassJob.Id;
+            var classJobID = LocalPlayer!.ClassJob.Id;
 
-            if (JobId != Job.Adventurer && JobId != classJobId)
+            if (JobID != Job.Adventurer && JobID != classJobID)
             {
                 return false;
             }
 
-            var resultingActionId = Invoke(actionId, lastComboMove, comboTime, level);
+            var resultingActionID = Invoke(actionID, lastComboMove, comboTime, level);
 
-            if (resultingActionId == 0 || actionId == resultingActionId)
+            if (resultingActionID == 0 || actionID == resultingActionID)
             {
                 return false;
             }
 
-            newActionId = resultingActionId;
+            newActionID = resultingActionID;
             return true;
         }
 
         /// <summary>
         /// 执行
         /// </summary>
-        /// <param name="actionId">技能ID</param>
+        /// <param name="actionID">技能ID</param>
         /// <param name="lastComboMove"></param>
         /// <param name="comboTime"></param>
         /// <param name="level">人物等级</param>
         /// <returns>下一个技能ID</returns>
-        protected abstract uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level);
+        protected abstract uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level);
 
         #region Helper Methods
 
@@ -65,30 +65,30 @@ namespace CustomComboPlugin.Combos
         /// <summary>
         /// combo是否启用
         /// </summary>
-        /// <param name="comboId">combo ID</param>
+        /// <param name="comboID">combo ID</param>
         /// <returns>如果combo启用，返回true</returns>
-        protected static bool IsEnabled(ushort comboId) => PluginService.Configuration.IsEnabled(comboId);
+        protected static bool IsEnabled(ushort comboID) => PluginService.Configuration.IsEnabled(comboID);
 
         /// <summary>
         /// 技能是否结束CD
         /// </summary>
-        /// <param name="actionId">技能ID</param>
+        /// <param name="actionID">技能ID</param>
         /// <returns>如果技能已经CD完成，返回true</returns>
-        protected static bool IsOffCooldown(uint actionId) => !GetCooldown(actionId).IsCooldown;
+        protected static bool IsOffCooldown(uint actionID) => !GetCooldown(actionID).IsCooldown;
 
         /// <summary>
         /// 获取技能的CD数据
         /// </summary>
         /// <param name="actionID">技能ID</param>
         /// <returns>技能的CD数据</returns>
-        protected static CooldownData GetCooldown(uint actionId) => PluginService.ComboCache.GetCooldown(actionId);
+        protected static CooldownData GetCooldown(uint actionID) => PluginService.ComboCache.GetCooldown(actionID);
 
         /// <summary>
         /// 获取技能当前等级的ID
         /// </summary>
-        /// <param name="actionId">技能ID</param>
+        /// <param name="actionID">技能ID</param>
         /// <returns>技能当前等级的ID</returns>
-        protected static uint LevelSync(uint actionId) => PluginService.ComboManager.OriginalHook(actionId);
+        protected static uint LevelSync(uint actionID) => PluginService.ComboManager.OriginalHook(actionID);
 
         /// <summary>
         /// 获取职业量表
@@ -101,26 +101,26 @@ namespace CustomComboPlugin.Combos
         /// <summary>
         /// 获取玩家是否对自己施加了某种Effect
         /// </summary>
-        /// <param name="effectId">EffectID</param>
+        /// <param name="effectID">EffectID</param>
         /// <returns>如果玩家对自己施加了此Effect，返回true</returns>
-        protected static bool HasSelfEffect(ushort effectId) => FindPlayerEffect(effectId) is not null;
+        protected static bool HasSelfEffect(ushort effectID) => FindPlayerEffect(effectID) is not null;
 
         /// <summary>
         /// 获取玩家对自己施加的Effect
         /// </summary>
-        /// <param name="effectId">EffectID</param>
+        /// <param name="effectID">EffectID</param>
         /// <returns>获取到的Effect对应的Status</returns>
-        protected static Status? FindPlayerEffect(ushort effectId) => FindEffect(effectId, LocalPlayer, LocalPlayer?.ObjectId);
+        protected static Status? FindPlayerEffect(ushort effectID) => FindEffect(effectID, LocalPlayer, LocalPlayer?.ObjectId);
 
         /// <summary>
         /// 获取目标GameObject的特定Effect
         /// </summary>
-        /// <param name="effectId">EffectID</param>
+        /// <param name="effectID">EffectID</param>
         /// <param name="gameObject">目标GameObject</param>
-        /// <param name="sourceId">Effect来源ID</param>
+        /// <param name="sourceID">Effect来源ID</param>
         /// <returns>获取到的Effect对应的Status</returns>
-        protected static Status? FindEffect(ushort effectId, GameObject? gameObject, uint? sourceId)
-            => PluginService.ComboCache.GetStatus(effectId, gameObject, sourceId);
+        protected static Status? FindEffect(ushort effectID, GameObject? gameObject, uint? sourceID)
+            => PluginService.ComboCache.GetStatus(effectID, gameObject, sourceID);
 
         /// <summary>
         /// 获取玩家的宠物是否处于同行状态

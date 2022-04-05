@@ -13,11 +13,11 @@ namespace CustomComboPlugin.Attributes
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true, Inherited = false)]
     internal sealed class ConflictComboAttribute : Attribute
     {
-        public ConflictComboAttribute(ushort conflictId)
+        public ConflictComboAttribute(ushort conflictID)
         {
-            ConflictId = conflictId;
+            ConflictID = conflictID;
         }
 
-        public ushort ConflictId { get; }
+        public ushort ConflictID { get; }
     }
 }

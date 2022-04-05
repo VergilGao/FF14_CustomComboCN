@@ -16,9 +16,9 @@ namespace CustomComboPlugin.Combos.Summoner
     {
         public const ushort Identity = (Job.Summoner << 8) ^ 0x01;
 
-        protected override uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level)
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionId == Summoner.Identities.Skills.Painflare)
+            if (actionID == Summoner.Identities.Skills.Painflare)
             {
                 var guauge = GetJobGauge<SMNGauge>();
 
@@ -28,7 +28,7 @@ namespace CustomComboPlugin.Combos.Summoner
                 }
             }
 
-            return actionId;
+            return actionID;
         }
     }
 }

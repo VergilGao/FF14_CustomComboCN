@@ -12,11 +12,11 @@ namespace CustomComboPlugin.Attributes
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     internal sealed class ParentComboAttribute : Attribute
     {
-        public ParentComboAttribute(ushort parentId)
+        public ParentComboAttribute(ushort parentID)
         {
-            ParentId = parentId;
+            ParentID = parentID;
         }
 
-        public ushort ParentId { get; }
+        public ushort ParentID { get; }
     }
 }

@@ -33,7 +33,7 @@ namespace CustomComboPlugin
                                                t.GetCustomAttribute<ObsoluteComboAttribute>() is null &&
                                                t.GetCustomAttribute<CustomComboInfoAttribute>() is not null &&
                                                t.GetCustomAttribute<SecretComboAttribute>() is not null)
-                                   .Select(t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboId)
+                                   .Select(t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboID)
                                    .ToHashSet();
 
             ConflictingCombos = Assembly.GetAssembly(typeof(CustomCombo))!.GetTypes()
@@ -43,8 +43,8 @@ namespace CustomComboPlugin
                                                     t.GetCustomAttribute<CustomComboInfoAttribute>() is not null &&
                                                     t.GetCustomAttributes<ConflictComboAttribute>().Count() > 0)
                                         .ToDictionary(
-                                            t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboId,
-                                            t => t.GetCustomAttributes<ConflictComboAttribute>().Select(attr => attr.ConflictId).ToArray());
+                                            t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboID,
+                                            t => t.GetCustomAttributes<ConflictComboAttribute>().Select(attr => attr.ConflictID).ToArray());
 
             ParentCombos = Assembly.GetAssembly(typeof(CustomCombo))!.GetTypes()
                                         .Where(t => !t.IsAbstract &&
@@ -52,8 +52,8 @@ namespace CustomComboPlugin
                                                     t.GetCustomAttribute<ObsoleteAttribute>() is null &&
                                                     t.GetCustomAttribute<CustomComboInfoAttribute>() is not null)
                                         .ToDictionary(
-                                            t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboId,
-                                            t => t.GetCustomAttribute<ParentComboAttribute>()?.ParentId);
+                                            t => t.GetCustomAttribute<CustomComboInfoAttribute>().ComboID,
+                                            t => t.GetCustomAttribute<ParentComboAttribute>()?.ParentID);
         }
 
         public int Version { get; set; } = 5;

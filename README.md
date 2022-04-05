@@ -19,10 +19,10 @@
    combo的名字，显示在配置界面上
    - `Description`  
    combo的介绍，尽可能的清晰易懂的介绍combo的功能
-   - `JobId`  
+   - `JobID`  
    combo对应的职业Id，作为常量可以在`CustomComboPlugin.Job`类中找到
-   - `ComboId`  
-   combo的Id，也是唯一标识符，`ushort`类型。为了避免冲突以及对其他开发人员透明，建议此Id采用常量表达式的方式声明在子类，其中高8位固定为职业Id，低8位可以自定义。比如即刻复活的Id：`public const ushort Identity = (Job.Adventurer << 8) ^ 0x10;`
+   - `ComboID`  
+   combo的ID，也是唯一标识符，`ushort`类型。为了避免冲突以及对其他开发人员透明，建议此Id采用常量表达式的方式声明在子类，其中高8位固定为职业Id，低8位可以自定义。比如即刻复活的Id：`public const ushort Identity = (Job.Adventurer << 8) ^ 0x10;`
    - `Order`  
    combo在配置界面的排序，同时也是combo逻辑的执行顺序
 2. **SecretCombo**  

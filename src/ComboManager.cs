@@ -42,14 +42,14 @@ namespace CustomComboPlugin
                                    {
                                        var comboInfo = t.GetCustomAttribute<CustomComboInfoAttribute>();
                                        var combo = Activator.CreateInstance(t);
-                                       t.BaseType.GetProperty(nameof(CustomCombo.JobId)).SetValue(combo, comboInfo.JobId);
-                                       t.BaseType.GetProperty(nameof(CustomCombo.ComboId)).SetValue(combo, comboInfo.ComboId);
+                                       t.BaseType.GetProperty(nameof(CustomCombo.JobID)).SetValue(combo, comboInfo.JobID);
+                                       t.BaseType.GetProperty(nameof(CustomCombo.ComboID)).SetValue(combo, comboInfo.ComboID);
                                        t.BaseType.GetProperty(nameof(CustomCombo.Order)).SetValue(combo, comboInfo.Order);
 
                                        return combo;
                                    })
                                    .Cast<CustomCombo>()
-                                   .OrderBy(c => c.JobId)
+                                   .OrderBy(c => c.JobID)
                                    .ThenBy(c => c.Order)
                                    .ToList();
 
@@ -68,7 +68,7 @@ namespace CustomComboPlugin
         internal uint OriginalHook(uint actionID)
             => getIconHook.Original(actionManager, actionID);
 
-        private unsafe uint GetIconDetour(IntPtr actionManager, uint actionId)
+        private unsafe uint GetIconDetour(IntPtr actionManager, uint actionID)
         {
             this.actionManager = actionManager;
 
@@ -76,7 +76,7 @@ namespace CustomComboPlugin
             {
                 if (DalamudService.ClientState.LocalPlayer == null)
                 {
-                    return OriginalHook(actionId);
+                    return OriginalHook(actionID);
                 }
 
                 var lastComboMove = *(uint*)PluginService.Address.LastComboMove;
@@ -85,22 +85,22 @@ namespace CustomComboPlugin
 
                 foreach (var combo in customCombos)
                 {
-                    if (combo.TryInvoke(actionId, level, lastComboMove, comboTime, out var newActionId))
+                    if (combo.TryInvoke(actionID, level, lastComboMove, comboTime, out var newActionID))
                     {
-                        return newActionId;
+                        return newActionID;
                     }
                 }
 
-                return OriginalHook(actionId);
+                return OriginalHook(actionID);
             }
             catch (Exception ex)
             {
                 PluginLog.Error(ex, "Don't crash the game");
-                return OriginalHook(actionId);
+                return OriginalHook(actionID);
             }
         }
 
-        private ulong IsIconReplaceableDetour(uint actionId) => 1;
+        private ulong IsIconReplaceableDetour(uint actionID) => 1;
 
         public void Dispose()
         {

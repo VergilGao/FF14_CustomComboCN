@@ -12,19 +12,19 @@ namespace CustomComboPlugin.Attributes
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public sealed class CustomComboInfoAttribute : Attribute
     {
-        public CustomComboInfoAttribute(string name, string description, byte jobId, ushort comboId, int order)
+        public CustomComboInfoAttribute(string name, string description, byte jobID, ushort comboID, int order)
         {
             Name = name;
             Description = description;
-            JobId = jobId;
-            ComboId = comboId;
+            JobID = jobID;
+            ComboID = comboID;
             Order = order;
         }
 
         public string Name { get; }
         public string Description { get; }
-        public byte JobId { get; }
-        public ushort ComboId { get; }
+        public byte JobID { get; }
+        public ushort ComboID { get; }
         public int Order { get; }
     }
 }

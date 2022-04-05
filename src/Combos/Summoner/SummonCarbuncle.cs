@@ -14,9 +14,9 @@ namespace CustomComboPlugin.Combos.Summoner
     {
         public const ushort Identity = (Job.Summoner << 8) ^ 0x02;
 
-        protected override uint Invoke(uint actionId, uint lastComboMove, float comboTime, byte level)
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
-            if (actionId == Summoner.Identities.Skills.SummonCarbuncle)
+            if (actionID == Summoner.Identities.Skills.SummonCarbuncle)
             {
                 if (level >= Summoner.Identities.Levels.Gemshine && HasPetPresent())
                 {
@@ -24,7 +24,7 @@ namespace CustomComboPlugin.Combos.Summoner
                 }
             }
 
-            return actionId;
+            return actionID;
         }
     }
 }
