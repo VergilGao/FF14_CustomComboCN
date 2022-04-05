@@ -10,12 +10,14 @@ using System.Collections.Generic;
 
 using Dalamud.Game;
 using Dalamud.Game.ClientState.JobGauge.Types;
+using Dalamud.Game.ClientState.Objects.Types;
 
 using FFXIVClientStructs.FFXIV.Client.Game;
 
 using Lumina.Excel;
 
 using Action = Lumina.Excel.GeneratedSheets.Action;
+using Status = Dalamud.Game.ClientState.Statuses.Status;
 
 namespace CustomComboPlugin
 {
@@ -24,11 +26,13 @@ namespace CustomComboPlugin
         private const uint InvalidObjectID = 0xE000_0000;
 
         // 每次 Framework Update 都令其过期
-        private readonly Dictionary<uint, CooldownData> cooldownCache = new();
+        private readonly Dictionary<(uint StatusId, uint? TargetId, uint? SourceId), Status?> statusCache = new(); // 状态缓存
 
-        private readonly Dictionary<uint, byte> cooldownGroupCache = new();
+        private readonly Dictionary<uint, CooldownData> cooldownCache = new(); // 冷却数据缓存
 
         // 无需过期
+        private readonly Dictionary<uint, byte> cooldownGroupCache = new();
+
         private readonly Dictionary<(uint ActionID, uint ClassJobID, byte Level), (ushort CurrentMax, ushort Max)> chargesCache = new(); // 技能充能次数的缓存
 
         private readonly Dictionary<Type, JobGaugeBase> jobGaugeCache = new(); // 职业量表
@@ -123,8 +127,39 @@ namespace CustomComboPlugin
             return (TJobGauge)gauge;
         }
 
+        public Status? GetStatus(uint statusId, GameObject? gameObject, uint? sourceId)
+        {
+            var key = (statusId, gameObject?.ObjectId, sourceId);
+            if (statusCache.TryGetValue(key, out var found))
+            {
+                return found;
+            }
+
+            if (gameObject is null)
+            {
+                return statusCache[key] = null;
+            }
+
+            if (gameObject is not BattleChara chara)
+            {
+                return statusCache[key] = null;
+            }
+
+            foreach (var status in chara.StatusList)
+            {
+                if (status.StatusId == statusId &&
+                    (!sourceId.HasValue || status.SourceID == 0 || status.SourceID == InvalidObjectID || status.SourceID == sourceId))
+                {
+                    return statusCache[key] = status;
+                }
+            }
+
+            return statusCache[key] = null;
+        }
+
         private void OnFrameworkUpdate(Framework framework)
         {
+            statusCache.Clear();
             cooldownCache.Clear();
         }
 

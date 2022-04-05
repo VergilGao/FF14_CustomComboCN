@@ -7,6 +7,8 @@
 
 using Dalamud.Game.ClientState.JobGauge.Types;
 using Dalamud.Game.ClientState.Objects.SubKinds;
+using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Game.ClientState.Statuses;
 
 namespace CustomComboPlugin.Combos
 {
@@ -94,6 +96,30 @@ namespace CustomComboPlugin.Combos
         /// <returns>职业量表</returns>
         protected static TJobGauge GetJobGauge<TJobGauge>() where TJobGauge : JobGaugeBase
             => PluginService.ComboCache.GetJobGauge<TJobGauge>();
+
+        /// <summary>
+        /// 获取玩家是否对自己施加了某种Effect
+        /// </summary>
+        /// <param name="effectId">EffectID</param>
+        /// <returns>如果玩家对自己施加了此Effect，返回true</returns>
+        protected static bool HasSelfEffect(ushort effectId) => FindPlayerEffect(effectId) is not null;
+
+        /// <summary>
+        /// 获取玩家对自己施加的Effect
+        /// </summary>
+        /// <param name="effectId">EffectID</param>
+        /// <returns>获取到的Effect对应的Status</returns>
+        protected static Status? FindPlayerEffect(ushort effectId) => FindEffect(effectId, LocalPlayer, LocalPlayer?.ObjectId);
+
+        /// <summary>
+        /// 获取目标GameObject的特定Effect
+        /// </summary>
+        /// <param name="effectId">EffectID</param>
+        /// <param name="gameObject">目标GameObject</param>
+        /// <param name="sourceId">Effect来源ID</param>
+        /// <returns>获取到的Effect对应的Status</returns>
+        protected static Status? FindEffect(ushort effectId, GameObject? gameObject, uint? sourceId)
+            => PluginService.ComboCache.GetStatus(effectId, gameObject, sourceId);
 
         /// <summary>
         /// 获取玩家的宠物是否处于同行状态
