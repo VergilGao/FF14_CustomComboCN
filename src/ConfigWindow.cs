@@ -85,7 +85,7 @@ namespace CustomComboPlugin
 
             var showSecrets = PluginService.Configuration.EnableSecretCombos;
 
-            if (ImGui.Checkbox("我的底线还能再低一点", ref showSecrets))
+            if (ImGui.Checkbox("尝试那些危险的东西", ref showSecrets))
             {
                 PluginService.Configuration.EnableSecretCombos = showSecrets;
                 PluginService.Configuration.Save();
@@ -94,7 +94,7 @@ namespace CustomComboPlugin
             if (ImGui.IsItemHovered())
             {
                 ImGui.BeginTooltip();
-                ImGui.TextUnformatted("——底线——");
+                ImGui.TextUnformatted("这些功能通常很危险，使用不当会造成更多的DPS损失");
                 ImGui.EndTooltip();
             }
 
