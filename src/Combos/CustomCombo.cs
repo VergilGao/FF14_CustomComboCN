@@ -16,6 +16,7 @@ namespace CustomComboPlugin.Combos
     {
         public byte JobId { get; private set; }
         public ushort ComboId { get; private set; }
+        public int Order { get; private set; }
 
         public bool TryInvoke(uint actionId, byte level, uint lastComboMove, float comboTime, out uint newActionId)
         {

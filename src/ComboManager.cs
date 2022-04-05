@@ -44,10 +44,13 @@ namespace CustomComboPlugin
                                        var combo = Activator.CreateInstance(t);
                                        t.BaseType.GetProperty(nameof(CustomCombo.JobId)).SetValue(combo, comboInfo.JobId);
                                        t.BaseType.GetProperty(nameof(CustomCombo.ComboId)).SetValue(combo, comboInfo.ComboId);
+                                       t.BaseType.GetProperty(nameof(CustomCombo.Order)).SetValue(combo, comboInfo.Order);
 
                                        return combo;
                                    })
                                    .Cast<CustomCombo>()
+                                   .OrderBy(c => c.JobId)
+                                   .ThenBy(c => c.Order)
                                    .ToList();
 
             getIconHook = new Hook<GetIconDelegate>(PluginService.Address.GetAdjustedActionId, GetIconDetour);
