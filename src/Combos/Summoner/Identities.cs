@@ -16,7 +16,6 @@ namespace CustomComboPlugin.Combos.Summoner
                 Gemshine = 0x64c8, // 以太蓄能
                 Fester = 0xb5, // 溃烂爆发
                 EnergyDrain = 0x407c, // 能量吸收
-                Resurrection = 0xad, // 复生
                 Painflare = 0xdfa, // 痛苦核爆
                 EnergySyphon = 0x407e, // 能量抽取
                 Placeholder = uint.MaxValue;
@@ -41,7 +40,6 @@ namespace CustomComboPlugin.Combos.Summoner
                 Gemshine = 6, // 以太蓄能
                 Fester = 10, // 溃烂爆发
                 EnergyDrain = 10, // 能量吸收
-                Resurrection = 12, // 复生
                 Painflare = 40, // 痛苦核爆
                 EnergySyphon = 52, // 能量抽取
                 Placeholder = byte.MaxValue;

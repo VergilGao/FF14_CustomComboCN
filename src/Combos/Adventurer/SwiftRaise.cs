@@ -20,8 +20,11 @@ namespace CustomComboPlugin.Combos.Adventurer
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
             if ((actionID == WhiteMage.Identities.Skills.Raise && level >= WhiteMage.Identities.Levels.Raise) || // 白魔法师
-                (actionID == Summoner.Identities.Skills.Resurrection && level >= Summoner.Identities.Levels.Resurrection) || // 召唤师
-                (actionID == Astrologian.Identities.Skills.Ascend && level >= Astrologian.Identities.Levels.Ascend)) // 占星术士
+                (actionID == Arcanist.Identities.Skills.Resurrection && level >= Arcanist.Identities.Levels.Resurrection) || // 秘书双子
+                (actionID == Astrologian.Identities.Skills.Ascend && level >= Astrologian.Identities.Levels.Ascend) || // 占星术士
+                (actionID == RedMage.Identities.Skills.Verraise && level >= RedMage.Identities.Levels.Verraise && !HasSelfEffect(RedMage.Identities.Buffs.Dualcast)) || // 赤魔法师
+                (actionID == Sage.Identities.Skills.Egeiro && level >= Sage.Identities.Levels.Egeiro) || // 贤者
+                (actionID == BlueMage.Identities.Skills.AngelWhisper)) // 青魔法师
             {
                 if (level >= Adventurer.Identities.Levels.Swiftcast && IsOffCooldown(Adventurer.Identities.Skills.Swiftcast))
                 {
