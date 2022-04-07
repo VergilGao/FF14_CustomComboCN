@@ -1,6 +1,6 @@
 # CustomComboCN
 
-此插件旨在将连击和互相关联的能力技合并到一个按键上，感谢 [daemitus](https://github.com/attickdoor/XIVComboPlugin)  和 [attickdoor](https://github.com/daemitus/XIVComboPlugin) 的工作，他们实现了最初的基础功能，使得此插件的功能得以实现。
+此插件旨在将连击和互相关联的能力技合并到一个按键上，感谢 [attickdoor](https://github.com/attickdoor/XIVComboPlugin) 和 [daemitus](https://github.com/daemitus/XIVComboPlugin) 的工作，他们实现了最初的基础功能，使得此插件的功能得以实现。
 此仓库专注于降低身为国服玩家的开发维护人员的开发体验，并且使得合作开发更为简单方便。
 
 ## 开发
