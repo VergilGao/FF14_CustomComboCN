@@ -27,9 +27,9 @@ namespace CustomComboPlugin.Combos.Paladin
                 {
                     var requiescat = FindPlayerEffect(Paladin.Identities.Buffs.Requiescat);
 
-                    if (requiescat != null)
+                    if (requiescat != null && requiescat.RemainingTime > 0 && requiescat.StackCount > 1)
                     {
-                        if (LocalPlayer?.CurrentMp < 1000 || requiescat.RemainingTime <= 2.5)
+                        if (LocalPlayer?.CurrentMp < 1000 || (requiescat.RemainingTime <= GetCooldown(Paladin.Identities.Skills.Confiteor).CooldownTotal))
                         {
                             return Paladin.Identities.Skills.Confiteor;
                         }
