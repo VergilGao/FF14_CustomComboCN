@@ -14,6 +14,7 @@ namespace CustomComboPlugin
         public const byte
             Adventurer = 0x00, // 冒险者
             Paladin = 0x13, // 骑士
+            Warrior = 0x15, // 战士
             WhiteMage = 0x18, // 白魔法师
             Summoner = 0x1b, // 召唤师
             Scholar = 0x1c, // 学者
@@ -26,6 +27,7 @@ namespace CustomComboPlugin
         {
             [Adventurer] = "冒险者",
             [Paladin] = "骑士",
+            [Warrior] = "战士",
             [WhiteMage] = "白魔法师",
             [Summoner] = "召唤师",
             [Scholar] = "学者",
