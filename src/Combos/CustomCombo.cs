@@ -113,6 +113,16 @@ namespace CustomComboPlugin.Combos
         protected static Status? FindPlayerEffect(ushort effectID) => FindEffect(effectID, LocalPlayer, LocalPlayer?.ObjectId);
 
         /// <summary>
+        /// 获取玩家自身对目标GameObject施加的特定Effect
+        /// </summary>
+        /// <param name="effectID">EffectID</param>
+        /// <param name="gameObject">目标GameObject</param>
+        /// <param name="sourceID">Effect来源ID</param>
+        /// <returns>获取到的Effect对应的Status</returns>
+        protected static Status? FindEffectToEnemy(ushort effectID, GameObject? gameObject)
+            => PluginService.ComboCache.GetStatus(effectID, gameObject, LocalPlayer?.ObjectId);
+
+        /// <summary>
         /// 获取目标GameObject的特定Effect
         /// </summary>
         /// <param name="effectID">EffectID</param>
