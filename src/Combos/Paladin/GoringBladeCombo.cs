@@ -42,4 +42,35 @@ namespace CustomComboPlugin.Combos.Paladin
             return actionID;
         }
     }
+
+    /// <summary>
+    /// 英勇之剑状态
+    /// </summary>
+    [ParentCombo(GoringBladeCombo.Identity)]
+    [CustomComboInfo("英勇之剑dot保护", "当目标身上的英勇之剑dot时间超过5s时，用王权剑替换沥血剑", Job.Paladin, Identity, 2)]
+    internal sealed class BladeOfValorStatusCombo : CustomCombo
+    {
+        public const ushort Identity = (Job.Paladin << 8) ^ 0x08;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == Paladin.Identities.Skills.GoringBlade)
+            {
+                if (comboTime > 0)
+                {
+                    if (lastComboMove == Paladin.Identities.Skills.RiotBlade)
+                    {
+                        var bladeOfValor = FindEffectToEnemy(Paladin.Identities.Debuffs.BladeOfValor, SelectedTarget);
+
+                        if (bladeOfValor?.RemainingTime > 5)
+                        {
+                            return Paladin.Identities.Skills.RoyalAuthority;
+                        }
+                    }
+                }
+            }
+
+            return actionID;
+        }
+    }
 }

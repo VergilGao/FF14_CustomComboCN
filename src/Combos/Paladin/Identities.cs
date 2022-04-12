@@ -45,6 +45,7 @@ namespace CustomComboPlugin.Combos.Paladin
         public static class Debuffs
         {
             public const ushort
+                BladeOfValor = 0xaa1, // 英勇之剑
                 Placeholder = ushort.MaxValue;
         }
 
