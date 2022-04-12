@@ -7,6 +7,8 @@
 
 using CustomComboPlugin.Attributes;
 
+using Dalamud.Game.ClientState.JobGauge.Types;
+
 namespace CustomComboPlugin.Combos.Warrior
 {
     /// <summary>
@@ -37,6 +39,35 @@ namespace CustomComboPlugin.Combos.Warrior
                 }
 
                 return Warrior.Identities.Skills.HeavySwing;
+            }
+
+            return actionID;
+        }
+    }
+
+    /// <summary>
+    /// 暴风斩兽魂量谱状态
+    /// </summary>
+    [SecretCombo]
+    [ParentCombo(StormsPathCombo.Identity)]
+    [CustomComboInfo("暴风斩兽魂量谱状态", "兽魂溢出时，裂石飞环替换暴风斩", Job.Warrior, Identity, 1)]
+    internal sealed class StormPathBeastStatus : CustomCombo
+    {
+        public const ushort Identity = (Job.Warrior << 8) ^ 0x04;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == Warrior.Identities.Skills.StormsPath)
+            {
+                var beast = GetJobGauge<WARGauge>();
+
+                if (beast?.BeastGauge == 100 ||
+                   (lastComboMove == Warrior.Identities.Skills.HeavySwing && beast?.BeastGauge >= 90) ||
+                   (lastComboMove == Warrior.Identities.Skills.Maim && beast?.BeastGauge >= 80))
+                {
+                    // 原初之魂/裂石飞环/狂魂
+                    return LevelSync(Warrior.Identities.Skills.InnerBeast);
+                }
             }
 
             return actionID;
