@@ -10,6 +10,7 @@ using Dalamud.Game;
 using Dalamud.Game.ClientState;
 using Dalamud.Game.ClientState.Buddy;
 using Dalamud.Game.ClientState.JobGauge;
+using Dalamud.Game.ClientState.Objects;
 using Dalamud.Game.Command;
 using Dalamud.IoC;
 using Dalamud.Plugin;
@@ -61,6 +62,12 @@ namespace CustomComboPlugin
         /// 小队列表
         /// </summary>
         [PluginService]
-        internal static BuddyList BuddyList { get; private set; } = null!;
+        public static BuddyList BuddyList { get; private set; } = null!;
+
+        /// <summary>
+        /// 目标管理器
+        /// </summary>
+        [PluginService]
+        public static TargetManager TargetManager { get; private set; } = null!;
     }
 }

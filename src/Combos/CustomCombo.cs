@@ -128,6 +128,16 @@ namespace CustomComboPlugin.Combos
         /// <returns>如果宠物处于同行状态，返回true</returns>
         protected static bool HasPetPresent() => DalamudService.BuddyList.PetBuddyPresent;
 
+        /// <summary>
+        /// 获取当前玩家的目标
+        /// </summary>
+        protected static GameObject? CurrentTarget => DalamudService.TargetManager.Target;
+
+        /// <summary>
+        /// 获取当前玩家的目标
+        /// </summary>
+        protected static GameObject? SelectedTarget => DalamudService.TargetManager.SoftTarget ?? DalamudService.TargetManager.Target;
+
         #endregion Helper Methods
     }
 }
