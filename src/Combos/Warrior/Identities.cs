@@ -12,6 +12,7 @@ namespace CustomComboPlugin.Combos.Warrior
         public static class Skills
         {
             public const uint
+                HeavySwing = 0x1f, // 重劈
                 Maim = 0x25, // 凶残裂
                 Berserk = 0x26, // 狂暴
                 StormsPath = 0x2a, // 暴风斩
