@@ -40,7 +40,7 @@ namespace CustomComboPlugin.Combos.Warrior
         {
             public const ushort
                 Berserk = 0x56, // 狂暴
-                InnerRelease = 0x1f3, // 原初的解放
+                InnerRelease = 0x499, // 原初的解放
                 NascentChaos = 0x769, // 原初的混沌
                 PrimalRendReady = 0xa40, // 蛮荒崩裂预备
                 SurgingTempest = 0xa75, // 战场风暴
