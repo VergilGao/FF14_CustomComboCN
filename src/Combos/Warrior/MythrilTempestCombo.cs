@@ -68,4 +68,31 @@ namespace CustomComboPlugin.Combos.Warrior
             return actionID;
         }
     }
+
+    /// <summary>
+    /// 秘银暴风解放状态
+    /// </summary>
+    [SecretCombo]
+    [ParentCombo(MythrilTempestCombo.Identity)]
+    [CustomComboInfo("秘银暴风解放状态", "原初的解放时，裂石飞环替换秘银暴风", Job.Warrior, Identity, 4)]
+    internal sealed class MythrilTempestInnerRelease : CustomCombo
+    {
+        public const ushort Identity = (Job.Warrior << 8) ^ 0x11;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == Warrior.Identities.Skills.MythrilTempest)
+            {
+                var innerRelease = FindPlayerEffect(Warrior.Identities.Buffs.InnerRelease);
+
+                if (innerRelease?.StackCount > 0)
+                {
+                    // 原初之魂/裂石飞环/狂魂
+                    return LevelSync(Warrior.Identities.Skills.SteelCyclone);
+                }
+            }
+
+            return actionID;
+        }
+    }
 }

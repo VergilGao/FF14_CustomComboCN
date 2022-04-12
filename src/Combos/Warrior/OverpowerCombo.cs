@@ -68,4 +68,31 @@ namespace CustomComboPlugin.Combos.Warrior
             return actionID;
         }
     }
+
+    /// <summary>
+    /// 超压斧解放状态
+    /// </summary>
+    [SecretCombo]
+    [ParentCombo(OverpowerCombo.Identity)]
+    [CustomComboInfo("超压斧解放状态", "原初的解放时，裂石飞环替换超压斧", Job.Warrior, Identity, 5)]
+    internal sealed class OverpowerInnerRelease : CustomCombo
+    {
+        public const ushort Identity = (Job.Warrior << 8) ^ 0x12;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == Warrior.Identities.Skills.Overpower)
+            {
+                var innerRelease = FindPlayerEffect(Warrior.Identities.Buffs.InnerRelease);
+
+                if (innerRelease?.StackCount > 0)
+                {
+                    // 原初之魂/裂石飞环/狂魂
+                    return LevelSync(Warrior.Identities.Skills.SteelCyclone);
+                }
+            }
+
+            return actionID;
+        }
+    }
 }
