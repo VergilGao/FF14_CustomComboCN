@@ -15,10 +15,12 @@ namespace CustomComboPlugin.Combos.Warrior
                 HeavySwing = 0x1f, // 重劈
                 Maim = 0x25, // 凶残裂
                 Berserk = 0x26, // 狂暴
+                Overpower = 0x29, // 超压斧
                 StormsPath = 0x2a, // 暴风斩
                 ThrillOfBattle = 0x28, // 战栗
                 InnerBeast = 0x31, // 原初之魂
                 MythrilTempest = 0x404e, // 秘银暴风
+                SteelCyclone = 0x33, // 钢铁旋风
                 StormsEye = 0x2d, // 暴风碎
                 Infuriate = 0x34, // 战壕
                 FellCleave = 0xddd, // 裂石飞环
@@ -60,6 +62,7 @@ namespace CustomComboPlugin.Combos.Warrior
                 ThrillOfBattle = 30, // 战栗
                 InnerBeast = 35, // 原初之魂
                 MythrilTempest = 40, // 秘银暴风
+                SteelCyclone = 45, // 钢铁旋风
                 StormsEye = 50, // 暴风碎
                 Infuriate = 50, // 战壕
                 FellCleave = 54, // 裂石飞环
