@@ -20,7 +20,7 @@ namespace CustomComboPlugin.Combos.Summoner
             {
                 if (level >= Summoner.Identities.Levels.Gemshine && HasPetPresent())
                 {
-                    return LevelSync(Summoner.Identities.Skills.Gemshine);
+                    return OriginalHook(Summoner.Identities.Skills.Gemshine);
                 }
             }
 

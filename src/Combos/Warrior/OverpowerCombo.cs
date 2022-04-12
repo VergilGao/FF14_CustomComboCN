@@ -61,7 +61,7 @@ namespace CustomComboPlugin.Combos.Warrior
                     (lastComboMove == Warrior.Identities.Skills.Overpower && beast?.BeastGauge > 80)))
                 {
                     // 钢铁旋风/地毁人亡/混沌旋风
-                    return LevelSync(Warrior.Identities.Skills.SteelCyclone);
+                    return OriginalHook(Warrior.Identities.Skills.SteelCyclone);
                 }
             }
 
@@ -88,7 +88,7 @@ namespace CustomComboPlugin.Combos.Warrior
                 if (innerRelease?.StackCount > 0)
                 {
                     // 原初之魂/裂石飞环/狂魂
-                    return LevelSync(Warrior.Identities.Skills.SteelCyclone);
+                    return OriginalHook(Warrior.Identities.Skills.SteelCyclone);
                 }
             }
 

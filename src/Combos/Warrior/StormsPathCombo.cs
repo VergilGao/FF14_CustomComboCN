@@ -66,7 +66,7 @@ namespace CustomComboPlugin.Combos.Warrior
                    (lastComboMove == Warrior.Identities.Skills.Maim && beast?.BeastGauge >= 80))
                 {
                     // 原初之魂/裂石飞环/狂魂
-                    return LevelSync(Warrior.Identities.Skills.InnerBeast);
+                    return OriginalHook(Warrior.Identities.Skills.InnerBeast);
                 }
             }
 
@@ -93,7 +93,7 @@ namespace CustomComboPlugin.Combos.Warrior
                 if (innerRelease?.StackCount > 0)
                 {
                     // 原初之魂/裂石飞环/狂魂
-                    return LevelSync(Warrior.Identities.Skills.InnerBeast);
+                    return OriginalHook(Warrior.Identities.Skills.InnerBeast);
                 }
             }
 

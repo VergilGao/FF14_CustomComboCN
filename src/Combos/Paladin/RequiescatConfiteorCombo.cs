@@ -29,7 +29,7 @@ namespace CustomComboPlugin.Combos.Paladin
                         lastComboMove == Paladin.Identities.Skills.BladeOfFaith ||
                         lastComboMove == Paladin.Identities.Skills.Confiteor)
                     {
-                        return LevelSync(Paladin.Identities.Skills.Confiteor);
+                        return OriginalHook(Paladin.Identities.Skills.Confiteor);
                     }
                 }
 

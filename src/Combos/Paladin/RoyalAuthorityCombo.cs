@@ -28,7 +28,7 @@ namespace CustomComboPlugin.Combos.Paladin
                         level >= Paladin.Identities.Levels.RageOfHalone)
                     {
                         // 战女神之怒/王权剑
-                        return LevelSync(Paladin.Identities.Skills.RageOfHalone);
+                        return OriginalHook(Paladin.Identities.Skills.RageOfHalone);
                     }
 
                     if (lastComboMove == Paladin.Identities.Skills.FastBlade &&
