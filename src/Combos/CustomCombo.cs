@@ -84,11 +84,11 @@ namespace CustomComboPlugin.Combos
         protected static CooldownData GetCooldown(uint actionID) => PluginService.ComboCache.GetCooldown(actionID);
 
         /// <summary>
-        /// 获取技能当前等级的ID
+        /// 获取技能当前状态的原始替换ID
         /// </summary>
         /// <param name="actionID">技能ID</param>
-        /// <returns>技能当前等级的ID</returns>
-        protected static uint LevelSync(uint actionID) => PluginService.ComboManager.OriginalHook(actionID);
+        /// <returns>技能当前状态的原始替换ID</returns>
+        protected static uint OriginalHook(uint actionID) => PluginService.ComboManager.OriginalHook(actionID);
 
         /// <summary>
         /// 获取职业量表
