@@ -56,7 +56,7 @@ namespace CustomComboPlugin
                                             t => t.GetCustomAttribute<ParentComboAttribute>()?.ParentID);
         }
 
-        public int Version { get; set; } = 5;
+        public int Version { get; set; } = 7;
 
         [JsonProperty("EnableSecretCombos")]
         public bool EnableSecretCombos { get; set; } = false;

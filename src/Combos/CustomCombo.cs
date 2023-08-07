@@ -29,7 +29,7 @@ namespace CustomComboPlugin.Combos
 
             var classJobID = LocalPlayer!.ClassJob.Id;
 
-            if (JobID != Job.Adventurer && JobID != classJobID)
+            if (JobID != Job.冒险者 && JobID != classJobID)
             {
                 return false;
             }

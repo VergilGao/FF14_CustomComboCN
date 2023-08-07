@@ -15,10 +15,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// 血壤状态
     /// </summary>
     [SecretCombo]
-    [CustomComboInfo("血壤状态", "当子弹不足时，血壤替换烈牙/爆发击/命运之环", Job.Gunbreaker, Identity, 4)]
+    [CustomComboInfo("血壤状态", "当子弹不足时，血壤替换烈牙/爆发击/命运之环", Job.绝枪战士, Identity, 4)]
     internal sealed class BloodfestStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x07;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x07;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

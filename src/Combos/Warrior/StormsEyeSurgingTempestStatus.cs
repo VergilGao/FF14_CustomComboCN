@@ -13,10 +13,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// 暴风碎战场风暴状态
     /// </summary>
     [SecretCombo]
-    [CustomComboInfo("战场风暴状态", "红斩不足15秒时，暴风碎替换暴风斩", Job.Warrior, Identity, 4)]
+    [CustomComboInfo("战场风暴状态", "红斩不足15秒时，暴风碎替换暴风斩", Job.战士, Identity, 4)]
     internal sealed class StormsEyeSurgingTempestStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x06;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x06;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

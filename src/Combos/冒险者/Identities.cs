@@ -5,15 +5,15 @@
  *  战斗职业职能技能相关的数据ID
  */
 
-namespace CustomComboPlugin.Combos.Adventurer
+namespace CustomComboPlugin.Combos.冒险者
 {
     internal static class Identities
     {
         public static class Skills
         {
             public const uint
-                LowBlow = 0x1d74, // 下踢
-                Swiftcast = 0x1d89, // 即刻咏唱
+                下踢 = 0x1d74,
+                即刻咏唱 = 0x1d89,
                 Placeholder = uint.MaxValue;
         }
 
@@ -32,8 +32,8 @@ namespace CustomComboPlugin.Combos.Adventurer
         public static class Levels
         {
             public const byte
-                LowBlow = 12, // 下踢
-                Swiftcast = 18, // 即刻咏唱
+                下踢 = 12,
+                即刻咏唱 = 18,
                 Placeholder = byte.MaxValue;
         }
     }

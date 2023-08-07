@@ -14,10 +14,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// <summary>
     /// 暴风碎连击
     /// </summary>
-    [CustomComboInfo("暴风碎连击", "用连击替换暴风碎", Job.Warrior, Identity, 1)]
+    [CustomComboInfo("暴风碎连击", "用连击替换暴风碎", Job.战士, Identity, 1)]
     internal sealed class StormsEyeCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x01;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x01;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -50,10 +50,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// </summary>
     [SecretCombo]
     [ParentCombo(StormsEyeCombo.Identity)]
-    [CustomComboInfo("暴风碎兽魂量谱状态", "兽魂溢出时，裂石飞环替换暴风碎", Job.Warrior, Identity, 2)]
+    [CustomComboInfo("暴风碎兽魂量谱状态", "兽魂溢出时，裂石飞环替换暴风碎", Job.战士, Identity, 2)]
     internal sealed class StormsEyeBeastStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x05;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x05;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -79,10 +79,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// </summary>
     [SecretCombo]
     [ParentCombo(StormsEyeCombo.Identity)]
-    [CustomComboInfo("暴风碎解放状态", "原初的解放时，裂石飞环替换暴风碎", Job.Warrior, Identity, 3)]
+    [CustomComboInfo("暴风碎解放状态", "原初的解放时，裂石飞环替换暴风碎", Job.战士, Identity, 3)]
     internal sealed class StormsEyeInnerRelease : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x10;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x10;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

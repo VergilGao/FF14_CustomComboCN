@@ -12,10 +12,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// <summary>
     /// 残暴弹连击
     /// </summary>
-    [CustomComboInfo("残暴弹连击", "连击替换残暴弹，不打迅连斩来回血（真这么高压还是跳了算了）", Job.Gunbreaker, Identity, 1)]
+    [CustomComboInfo("残暴弹连击", "连击替换残暴弹，不打迅连斩来回血（真这么高压还是跳了算了）", Job.绝枪战士, Identity, 1)]
     internal sealed class BrutalShellCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x01;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x01;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

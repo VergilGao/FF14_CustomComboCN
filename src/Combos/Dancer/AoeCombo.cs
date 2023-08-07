@@ -14,10 +14,10 @@ namespace CustomComboPlugin.Combos.Dancer
     /// <summary>
     /// 群体连击
     /// </summary>
-    [CustomComboInfo("风车连击", "连击替换风车", Job.Dancer, Identity, 1)]
+    [CustomComboInfo("风车连击", "连击替换风车", Job.舞者, Identity, 1)]
     internal sealed class AoeCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Dancer << 8) ^ 0x01;
+        public const ushort Identity = (Job.舞者 << 8) ^ 0x01;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -49,10 +49,10 @@ namespace CustomComboPlugin.Combos.Dancer
     /// </summary>
     [SecretCombo]
     [ParentCombo(AoeCombo.Identity)]
-    [CustomComboInfo("风车-舞步连击", "发动舞步时，将下一个舞步技能替换到风车上", Job.Dancer, Identity, 2)]
+    [CustomComboInfo("风车-舞步连击", "发动舞步时，将下一个舞步技能替换到风车上", Job.舞者, Identity, 2)]
     internal sealed class AoeDancingStep : CustomCombo
     {
-        public const ushort Identity = (Job.Dancer << 8) ^ 0x04;
+        public const ushort Identity = (Job.舞者 << 8) ^ 0x04;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

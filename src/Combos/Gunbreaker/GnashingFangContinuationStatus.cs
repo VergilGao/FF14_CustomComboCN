@@ -12,10 +12,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// <summary>
     /// 烈牙-续剑状态
     /// </summary>
-    [CustomComboInfo("烈牙-续剑状态", "续剑插入烈牙连击", Job.Gunbreaker, Identity, 2)]
+    [CustomComboInfo("烈牙-续剑状态", "续剑插入烈牙连击", Job.绝枪战士, Identity, 2)]
     internal sealed class GnashingFangContinuationStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x02;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x02;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

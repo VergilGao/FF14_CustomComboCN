@@ -53,8 +53,8 @@ namespace CustomComboPlugin
                                    .ThenByDescending(c => c.Order)
                                    .ToList();
 
-            getIconHook = new Hook<GetIconDelegate>(PluginService.Address.GetAdjustedActionId, GetIconDetour);
-            isIconReplaceableHook = new Hook<IsIconReplaceableDelegate>(PluginService.Address.IsActionIdReplaceable, IsIconReplaceableDetour);
+            getIconHook = Hook<GetIconDelegate>.FromAddress(PluginService.Address.GetAdjustedActionId, GetIconDetour);
+            isIconReplaceableHook = Hook<IsIconReplaceableDelegate>.FromAddress(PluginService.Address.IsActionIdReplaceable, IsIconReplaceableDetour);
 
             getIconHook.Enable();
             isIconReplaceableHook.Enable();

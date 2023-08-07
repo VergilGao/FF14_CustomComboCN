@@ -13,10 +13,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// 超高速替换爆发击
     /// </summary>
     [SecretCombo]
-    [CustomComboInfo("超高速替换爆发击", "当超高速准备时，超高速替换爆发击", Job.Gunbreaker, Identity, 5)]
+    [CustomComboInfo("超高速替换爆发击", "当超高速准备时，超高速替换爆发击", Job.绝枪战士, Identity, 5)]
     internal sealed class EnhancedContinuationStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x08;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x08;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

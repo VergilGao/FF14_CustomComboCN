@@ -12,32 +12,32 @@ namespace CustomComboPlugin
     internal static class Job
     {
         public const byte
-            Adventurer = 0x00, // 冒险者
-            Paladin = 0x13, // 骑士
-            Warrior = 0x15, // 战士
-            WhiteMage = 0x18, // 白魔法师
-            Summoner = 0x1b, // 召唤师
-            Scholar = 0x1c, // 学者
-            Astrologian = 0x21, // 占星术士
-            RedMage = 0x23, // 赤魔法师
-            Gunbreaker = 0x25, // 绝枪战士
-            Dancer = 0x26, // 舞者
-            Sage = 0x40, // 贤者
+            冒险者 = 0x00, 
+            骑士 = 0x13, 
+            战士 = 0x15, 
+            白魔法师 = 0x18, 
+            召唤师 = 0x1b, 
+            学者 = 0x1c, 
+            占星术士 = 0x21, 
+            赤魔法师 = 0x23,
+            绝枪战士 = 0x25,
+            舞者 = 0x26,
+            贤者 = 0x40,
             Placeholder = 0xff;
 
         public static Dictionary<byte, string> Names = new()
         {
-            [Adventurer] = "冒险者",
-            [Paladin] = "骑士",
-            [Warrior] = "战士",
-            [WhiteMage] = "白魔法师",
-            [Summoner] = "召唤师",
-            [Scholar] = "学者",
-            [Astrologian] = "占星术士",
-            [RedMage] = "赤魔法师",
-            [Gunbreaker] = "绝枪战士",
-            [Dancer] = "舞者",
-            [Sage] = "贤者",
+            [冒险者] = "冒险者",
+            [骑士] = "骑士",
+            [战士] = "战士",
+            [白魔法师] = "白魔法师",
+            [召唤师] = "召唤师",
+            [学者] = "学者",
+            [占星术士] = "占星术士",
+            [赤魔法师] = "赤魔法师",
+            [绝枪战士] = "绝枪战士",
+            [舞者] = "舞者",
+            [贤者] = "贤者",
         };
     }
 }

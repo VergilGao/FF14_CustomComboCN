@@ -14,10 +14,10 @@ namespace CustomComboPlugin.Combos.Dancer
     /// <summary>
     /// 单体连击
     /// </summary>
-    [CustomComboInfo("瀑泻连击", "连击替换瀑泻", Job.Dancer, Identity, 0)]
+    [CustomComboInfo("瀑泻连击", "连击替换瀑泻", Job.舞者, Identity, 0)]
     internal sealed class SingleCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Dancer << 8) ^ 0x00;
+        public const ushort Identity = (Job.舞者 << 8) ^ 0x00;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -49,10 +49,10 @@ namespace CustomComboPlugin.Combos.Dancer
     /// </summary>
     [SecretCombo]
     [ParentCombo(SingleCombo.Identity)]
-    [CustomComboInfo("瀑泻-舞步连击", "发动舞步时，将下一个舞步技能替换到瀑泻上", Job.Dancer, Identity, 1)]
+    [CustomComboInfo("瀑泻-舞步连击", "发动舞步时，将下一个舞步技能替换到瀑泻上", Job.舞者, Identity, 1)]
     internal sealed class SingleDancingStep : CustomCombo
     {
-        public const ushort Identity = (Job.Dancer << 8) ^ 0x03;
+        public const ushort Identity = (Job.舞者 << 8) ^ 0x03;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

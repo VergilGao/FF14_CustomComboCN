@@ -14,10 +14,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// <summary>
     /// 迅连斩连击
     /// </summary>
-    [CustomComboInfo("迅连斩连击", "用连击替换迅连斩", Job.Gunbreaker, Identity, 0)]
+    [CustomComboInfo("迅连斩连击", "用连击替换迅连斩", Job.绝枪战士, Identity, 0)]
     internal sealed class SolidBarrelCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x00;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x00;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -50,10 +50,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// </summary>
     [SecretCombo]
     [ParentCombo(SolidBarrelCombo.Identity)]
-    [CustomComboInfo("迅连斩-爆发击", "子弹即将溢出时，爆发击替换迅连斩", Job.Gunbreaker, Identity, 1)]
+    [CustomComboInfo("迅连斩-爆发击", "子弹即将溢出时，爆发击替换迅连斩", Job.绝枪战士, Identity, 1)]
     internal sealed class SolidBarrelAmmoStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x04;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x04;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -83,10 +83,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// </summary>
     [SecretCombo]
     [ParentCombo(SolidBarrelAmmoStatus.Identity)]
-    [CustomComboInfo("迅连斩-爆发击-超高速", "超高速预备时超高速替换迅连斩", Job.Gunbreaker, Identity, 2)]
+    [CustomComboInfo("迅连斩-爆发击-超高速", "超高速预备时超高速替换迅连斩", Job.绝枪战士, Identity, 2)]
     internal sealed class SolidBarrelEnhancedContinuation : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0x05;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0x05;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -104,10 +104,10 @@ namespace CustomComboPlugin.Combos.Gunbreaker
     /// </summary>
     [SecretCombo]
     [ParentCombo(SolidBarrelAmmoStatus.Identity)]
-    [CustomComboInfo("无情连击", "无情状态中，用优先级最高的技能替换迅连斩（你仍然需要手动插入弓形冲波和爆破领域）", Job.Gunbreaker, Identity, 255)]
+    [CustomComboInfo("无情连击", "无情状态中，用优先级最高的技能替换迅连斩（你仍然需要手动插入弓形冲波和爆破领域）", Job.绝枪战士, Identity, 255)]
     internal sealed class NoMercyCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Gunbreaker << 8) ^ 0xff;
+        public const ushort Identity = (Job.绝枪战士 << 8) ^ 0xff;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

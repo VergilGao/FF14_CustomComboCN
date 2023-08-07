@@ -15,10 +15,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// 秘银暴风连击
     /// </summary>
     [ConflictCombo(Warrior.OverpowerCombo.Identity)]
-    [CustomComboInfo("秘银暴风连击", "用连击替换秘银暴风", Job.Warrior, Identity, 2)]
+    [CustomComboInfo("秘银暴风连击", "用连击替换秘银暴风", Job.战士, Identity, 2)]
     internal sealed class MythrilTempestCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x02;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x02;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -45,10 +45,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// </summary>
     [SecretCombo]
     [ParentCombo(MythrilTempestCombo.Identity)]
-    [CustomComboInfo("秘银暴风兽魂量谱状态", "兽魂溢出时，地毁人亡替换秘银暴风", Job.Warrior, Identity, 3)]
+    [CustomComboInfo("秘银暴风兽魂量谱状态", "兽魂溢出时，地毁人亡替换秘银暴风", Job.战士, Identity, 3)]
     internal sealed class MythrilTempestBeastStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x07;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x07;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -74,10 +74,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// </summary>
     [SecretCombo]
     [ParentCombo(MythrilTempestCombo.Identity)]
-    [CustomComboInfo("秘银暴风解放状态", "原初的解放时，裂石飞环替换秘银暴风", Job.Warrior, Identity, 4)]
+    [CustomComboInfo("秘银暴风解放状态", "原初的解放时，裂石飞环替换秘银暴风", Job.战士, Identity, 4)]
     internal sealed class MythrilTempestInnerRelease : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x11;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x11;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

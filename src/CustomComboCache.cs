@@ -127,9 +127,9 @@ namespace CustomComboPlugin
             return (TJobGauge)gauge;
         }
 
-        public Status? GetStatus(uint statusID, GameObject? gameObject, uint? sourceID)
+        public Status? GetStatus(uint statusId, GameObject? gameObject, uint? sourceId)
         {
-            var key = (statusID, gameObject?.ObjectId, sourceID);
+            var key = (statusId, gameObject?.ObjectId, sourceId);
             if (statusCache.TryGetValue(key, out var found))
             {
                 return found;
@@ -147,8 +147,8 @@ namespace CustomComboPlugin
 
             foreach (var status in chara.StatusList)
             {
-                if (status.StatusId == statusID &&
-                    (!sourceID.HasValue || status.SourceID == 0 || status.SourceID == InvalidObjectID || status.SourceID == sourceID))
+                if (status.StatusId == statusId &&
+                    (!sourceId.HasValue || status.SourceId== 0 || status.SourceId == InvalidObjectID || status.SourceId == sourceId))
                 {
                     return statusCache[key] = status;
                 }

@@ -15,10 +15,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// 超压斧连击
     /// </summary>
     [ConflictCombo(Warrior.MythrilTempestCombo.Identity)]
-    [CustomComboInfo("超压斧连击", "用连击替换超压斧，这样你就可以单独释放秘银爆发了", Job.Warrior, Identity, 3)]
+    [CustomComboInfo("超压斧连击", "用连击替换超压斧，这样你就可以单独释放秘银爆发了", Job.战士, Identity, 3)]
     internal sealed class OverpowerCombo : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x03;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x03;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -45,10 +45,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// </summary>
     [SecretCombo]
     [ParentCombo(OverpowerCombo.Identity)]
-    [CustomComboInfo("超压斧兽魂量谱状态", "兽魂溢出时，地毁人亡替换超压斧", Job.Warrior, Identity, 4)]
+    [CustomComboInfo("超压斧兽魂量谱状态", "兽魂溢出时，地毁人亡替换超压斧", Job.战士, Identity, 4)]
     internal sealed class OverpowerBeastStatus : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x08;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x08;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {
@@ -74,10 +74,10 @@ namespace CustomComboPlugin.Combos.Warrior
     /// </summary>
     [SecretCombo]
     [ParentCombo(OverpowerCombo.Identity)]
-    [CustomComboInfo("超压斧解放状态", "原初的解放时，裂石飞环替换超压斧", Job.Warrior, Identity, 5)]
+    [CustomComboInfo("超压斧解放状态", "原初的解放时，裂石飞环替换超压斧", Job.战士, Identity, 5)]
     internal sealed class OverpowerInnerRelease : CustomCombo
     {
-        public const ushort Identity = (Job.Warrior << 8) ^ 0x12;
+        public const ushort Identity = (Job.战士 << 8) ^ 0x12;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

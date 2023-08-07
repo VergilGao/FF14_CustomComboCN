@@ -15,10 +15,10 @@ namespace CustomComboPlugin.Combos.Dancer
     /// 舞步连击
     /// </summary>
     [SecretCombo]
-    [CustomComboInfo("舞步连击", "发动舞步时，将下一个舞步技能替换到对应舞步上", Job.Dancer, Identity, 255)]
+    [CustomComboInfo("舞步连击", "发动舞步时，将下一个舞步技能替换到对应舞步上", Job.舞者, Identity, 255)]
     internal sealed class DancingStep : CustomCombo
     {
-        public const ushort Identity = (Job.Dancer << 8) ^ 0xff;
+        public const ushort Identity = (Job.舞者 << 8) ^ 0xff;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

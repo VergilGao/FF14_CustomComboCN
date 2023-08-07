@@ -12,10 +12,10 @@ namespace CustomComboPlugin.Combos.Dancer
     /// <summary>
     /// 扇舞状态
     /// </summary>
-    [CustomComboInfo("扇舞状态", "扇舞·终预备/扇舞·急预备时，替换扇舞·序/扇舞·破", Job.Dancer, Identity, 2)]
+    [CustomComboInfo("扇舞状态", "扇舞·终预备/扇舞·急预备时，替换扇舞·序/扇舞·破", Job.舞者, Identity, 2)]
     internal sealed class FanDance : CustomCombo
     {
-        public const ushort Identity = (Job.Dancer << 8) ^ 0x02;
+        public const ushort Identity = (Job.舞者 << 8) ^ 0x02;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

@@ -9,10 +9,10 @@ using CustomComboPlugin.Attributes;
 
 namespace CustomComboPlugin.Combos.WhiteMage
 {
-    [CustomComboInfo("救疗同步治疗", "当等级同步到30级以下时，治疗替换救疗", Job.WhiteMage, Identity, 0)]
+    [CustomComboInfo("救疗同步治疗", "当等级同步到30级以下时，治疗替换救疗", Job.白魔法师, Identity, 0)]
     internal class Cure2LevelSync : CustomCombo
     {
-        public const ushort Identity = (Job.WhiteMage << 8) ^ 0x00;
+        public const ushort Identity = (Job.白魔法师 << 8) ^ 0x00;
 
         protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
         {

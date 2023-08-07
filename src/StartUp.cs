@@ -20,8 +20,6 @@ namespace CustomComboPlugin
 
         public StartUp(DalamudPluginInterface pluginInterface)
         {
-            FFXIVClientStructs.Resolver.Initialize();
-
             pluginInterface.Create<DalamudService>();
 
             PluginService.Configuration = pluginInterface.GetPluginConfig() as PluginConfiguration ?? new PluginConfiguration();
